@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome",
+      "url": "http://matute.remoteaccess.me:4200",
+      "webRoot": "${workspaceFolder}"
+    },
+      {
+          "type": "node",
+          "request": "attach",
+          "name": "Node: Nodemon",
+          "processId": "${command:PickProcess}",
+          "restart": true,
+          "protocol": "inspector",
+      },
+  ]
+}
