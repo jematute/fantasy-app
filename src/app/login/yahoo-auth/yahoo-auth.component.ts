@@ -1,5 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-yahoo-auth',
@@ -8,11 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class YahooAuthComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private login: LoginService) { }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe(s => {
-      console.log(s);
+      const code = s.get("code");
+      if (code) {
+        this.login.getToken(code);
+      }
     });
   }
 

@@ -27,7 +27,7 @@ export class Routes {
           const code = req.query.code;
           const oauth = new OAuth();
           const clientId = "dj0yJmk9ZDlZYWF2N2NMYXlpJmQ9WVdrOVZYZGxVa2gyTXpJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wNw--";
-          const redirectUri = "http://matute.remoteaccess.me:4200";
+          const redirectUri = "http://matute.remoteaccess.me:4200/yahoo_oauth";
 
           oauth.getToken(clientId,code, redirectUri, false).subscribe(s => {
             res.status(200).send(s);
@@ -39,7 +39,7 @@ export class Routes {
           const refresh_token = req.query.refresh_token;
           const oauth = new OAuth();
           const clientId = "dj0yJmk9ZDlZYWF2N2NMYXlpJmQ9WVdrOVZYZGxVa2gyTXpJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wNw--";
-          const redirectUri = "http://matute.remoteaccess.me:4200";
+          const redirectUri = "http://matute.remoteaccess.me:4200/yahoo_oauth";
           oauth.refreshToken(clientId, refresh_token, redirectUri).subscribe(s => {
             res.status(200).send(s);
           });

@@ -1,1 +1,13 @@
-<p>games works!</p>
+<div class="games-selection">
+  <a *ngFor="let game of distinctGames" pButton type="button" label="{{game}}" (click)="showSeasons(game)"></a>
+</div>
+
+<div class="season-selection">
+  <h3>{{currentGame}}</h3>
+  <a *ngFor="let season of seasons" pButton type="button" label="{{season.season}}" (click)="getLeagues(season)"></a>
+</div>
+
+<div *ngIf="currentLeagues" class="season-selection">
+    <h3>Leagues</h3>
+    <a *ngFor="let league of currentLeagues" pButton type="button" label="{{league[0].name}}" [routerLink]="['/league', league[0].league_key]"></a>
+</div>

@@ -1,0 +1,8 @@
+<p-panel header="Teams">
+    <div *ngIf="teams" class="team-selection">
+        <a *ngFor="let team of teams" pButton type="button" label="{{team.name}}" [routerLink]="['../team', team.team_key ]"></a>
+    </div>
+</p-panel>
+
+
+

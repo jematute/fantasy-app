@@ -8,4 +8,46 @@ body, html {
 body {
   font-family: 'Open Sans', sans-serif;
   display: flex;
+
+  .ui-panel {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    .ui-panel-content-wrapper {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      .ui-panel-content {
+        flex: 1 1 auto;
+        display: flex;
+        p-tabview {
+          flex: 1 1 auto;
+          display: flex;
+          .ui-tabview {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            .ui-tabview-panels {
+              flex: 1 1 auto;
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              overflow: auto;
+              p-tabpanel {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+              }
+            }
+          }
+        }
+
+
+      }
+    }
+  }
 }
+
+

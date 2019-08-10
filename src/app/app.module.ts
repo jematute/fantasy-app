@@ -11,6 +11,7 @@ import { NavbarModule } from './navbar/navbar.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FantasyModule } from './fantasy/fantasy.module';
 import { YahooAuthComponent } from './login/yahoo-auth/yahoo-auth.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { YahooAuthComponent } from './login/yahoo-auth/yahoo-auth.component';
     HomeModule,
     NavbarModule,
     SidebarModule,
-    FantasyModule
+    FantasyModule,
+    FontAwesomeModule
   ],
   providers: [ HttpClient, {
     provide: HTTP_INTERCEPTORS,

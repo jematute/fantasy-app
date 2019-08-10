@@ -1,0 +1,97 @@
+<p-panel header="{{team.name}}">
+    <p-tabView (onChange)="handleChange($event)">
+
+        <p-tabPanel header="Info">
+            <img *ngIf="logo" [src]="logo" alt="">
+        </p-tabPanel>
+        <p-tabPanel header="Roster">
+            <div class="loading-overlay" *ngIf="loading">
+                <i class="pi pi-spin pi-spinner" style="font-size: 3em"></i>
+            </div>
+            <ng-template pTemplate="content">
+                <p-table [value]="roster">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Team</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-player>
+                        <tr>
+                            <td><img *ngIf="player?.image_url" [src]="player?.image_url" alt=""></td>
+                            <td>{{player?.name?.full}}</td>
+                            <td>{{player?.display_position}}</td>
+                            <td>{{player?.editorial_team_full_name}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="Transactions">
+            <ng-template pTemplate="content">
+                <div class="loading-overlay" *ngIf="loading">
+                    <i class="pi pi-spin pi-spinner" style="font-size: 3em"></i>
+                </div>
+                <p-table [value]="transactions">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Date</th>
+                            <th>Player</th>
+                            <th>Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-tr>
+                        <tr>
+                          <td>
+                            {{tr.transaction?.date}}
+
+                            {{tr.transaction?.time}}
+                          </td>
+                          <td>
+                            <div *ngFor="let player of tr.players" class="player">
+                              {{player.name.full}}
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let player of tr.players">
+                              {{ucfirst(player.transaction_data.type)}}
+                            </div>
+                          </td>
+                          <td>
+                            <div *ngFor="let player of tr.players">
+                              <span *ngIf="player.transaction_data.source_type === 'freeagents'">
+                                Free Agents
+                              </span>
+                              <span *ngIf="player.transaction_data.source_type === 'waivers'">
+                                  Waivers
+                              </span>
+                              <span *ngIf="player.transaction_data.source_type === 'team'">
+                                  <a href="">{{player.transaction_data.source_team_name}}</a>
+                              </span>
+                            </div>
+                          </td>
+                          <td>
+                              <div *ngFor="let player of tr.players">
+                                <span *ngIf="player.transaction_data.destination_type === 'freeagents'">
+                                  Free Agents
+                                </span>
+                                <span *ngIf="player.transaction_data.destination_type === 'waivers'">
+                                    Waivers
+                                </span>
+                                <span *ngIf="player.transaction_data.destination_type === 'team'">
+                                    <a href="">{{player.transaction_data.destination_team_name}}</a>
+                                </span>
+                              </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </ng-template>
+        </p-tabPanel>
+    </p-tabView>
+
+</p-panel>

@@ -17,7 +17,7 @@ export class LoginService {
     this.http.get('http://localhost:3001/getoauthdirectory').pipe(map(resp => resp as OAuthSettings)).subscribe(settings => {
       const clientId = 'dj0yJmk9ZDlZYWF2N2NMYXlpJmQ9WVdrOVZYZGxVa2gyTXpJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wNw--';
       const authEndpoint = settings.authorization_endpoint;
-      const redirectUrl = 'http://matute.remoteaccess.me:4200';
+      const redirectUrl = 'http://matute.remoteaccess.me:4200/yahoo_oauth';
       const url = `${authEndpoint}?client_id=${clientId}&scope=openid&response_type=code&redirect_uri=${redirectUrl}`;
 
       window.location.href = url;
