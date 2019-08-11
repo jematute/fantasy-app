@@ -12,9 +12,9 @@
                 <p-table [value]="roster">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th></th>
+                            <th style="width: 5.25em"></th>
                             <th>Name</th>
-                            <th>Position</th>
+                            <th style="width: 6em">Position</th>
                             <th>Team</th>
                         </tr>
                     </ng-template>
@@ -92,6 +92,67 @@
                 </p-table>
             </ng-template>
         </p-tabPanel>
+        <p-tabPanel header="Draft Results">
+          <ng-template pTemplate="content">
+            <div class="loading-overlay" *ngIf="loading">
+                <i class="pi pi-spin pi-spinner" style="font-size: 3em"></i>
+            </div>
+            <p-table [value]="draftResults">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 5.25em">Round</th>
+                        <th style="width: 5.25em">Pick</th>
+                        <th style="width: 5.25em"></th>
+                        <th>Player</th>
+                        <th style="width: 6em">Position</th>
+                        <th>Team</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-dr>
+                    <tr>
+                      <td>
+                        {{dr.round}}
+                      </td>
+                      <td>{{dr.pick}}</td>
+                      <td><img [src]="dr.player_info.image_url" alt=""></td>
+                      <td>{{dr.player_info.name.full}}</td>
+                      <td>{{dr.player_info.display_position}}</td>
+                      <td>{{dr.player_info.editorial_team_full_name}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </ng-template>
+      </p-tabPanel>
+      <p-tabPanel header="Possible Keepers">
+        <ng-template pTemplate="content">
+          <div class="loading-overlay" *ngIf="loading">
+              <i class="pi pi-spin pi-spinner" style="font-size: 3em"></i>
+          </div>
+          <p-table [value]="draftResults">
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th style="width: 5.25em">Round</th>
+                      <th style="width: 5.25em">Pick</th>
+                      <th style="width: 5.25em"></th>
+                      <th>Player</th>
+                      <th>Team</th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-dr>
+                  <tr>
+                    <td>
+                      {{dr.round}}
+                    </td>
+                    <td>{{dr.pick}}</td>
+                    <td><img [src]="dr.player_info.image_url" alt=""></td>
+                    <td>{{dr.player_info.name.full}}</td>
+
+                    <td>{{dr.player_info.editorial_team_full_name}}</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+      </ng-template>
+    </p-tabPanel>
     </p-tabView>
 
 </p-panel>
